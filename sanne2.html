@@ -6,26 +6,29 @@
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 		<title>Test with textfile</title>
 		<link rel="stylesheet" href="styles.css" />
-		<link href="https://fonts.googleapis.com/css?family=Sriracha&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto|Sriracha&display=swap" rel="stylesheet" />
 	</head>
 	<body onload="insertText()">
-		<article id="node1">
-			Travel
-		</article>
-		<article id="node2">
-			Food
-		</article>
+		<article id="node1"></article>
+		<article id="node2"></article>
 		<script>
 			const nodesArray = [
-				{ id: 'node1', file: 'text1.txt' },
-				{ id: 'node2', file: 'text2.txt' },
+				{ id: 'node1', file: 'text1.txt', title: 'Travelling' },
+				{ id: 'node2', file: 'text2.txt', title: 'Cooking' },
 			];
 
 			const insertText = item => {
 				let myNode = document.getElementById(item.id);
+				let h1 = document.createElement('h1');
+				let p = document.createElement('p');
+
+				h1.innerHTML = item.title;
 				fetch(item.file)
 					.then(response => response.text())
-					.then(text => (myNode.innerHTML = text));
+					.then(text => (p.innerHTML = text));
+
+				myNode.appendChild(h1);
+				myNode.appendChild(p);
 			};
 
 			nodesArray.forEach(insertText);

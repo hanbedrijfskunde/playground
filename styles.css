@@ -5,3 +5,11 @@ article {
 	font-family: 'Sriracha', cursive;
 	line-height: 1.5;
 }
+
+article > h1 {
+	font-family: 'Sriracha', cursive;
+}
+
+article > p {
+	font-family: 'Roboto', sans-serif;
+}
