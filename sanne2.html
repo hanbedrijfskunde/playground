@@ -10,16 +10,25 @@
 	</head>
 	<body onload="insertText()">
 		<article id="node1">
-			Startup
+			Travel
+		</article>
+		<article id="node2">
+			Food
 		</article>
 		<script>
-			const insertText = () => {
-				let myNode = document.getElementById('node1');
-				console.log('Function runs');
-				fetch('text.txt')
+			const nodesArray = [
+				{ id: 'node1', file: 'text1.txt' },
+				{ id: 'node2', file: 'text2.txt' },
+			];
+
+			const insertText = item => {
+				let myNode = document.getElementById(item.id);
+				fetch(item.file)
 					.then(response => response.text())
 					.then(text => (myNode.innerHTML = text));
 			};
+
+			nodesArray.forEach(insertText);
 		</script>
 	</body>
 </html>
